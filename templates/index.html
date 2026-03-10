@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nexa — AI Voice Assistant</title>
+  <link rel="stylesheet" href="static/index.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;900&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- Background particles -->
+  <div class="bg-grid"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <div class="shell">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <div class="logo-pulse"></div>
+        <span class="logo-text">NEXA</span>
+      </div>
+      <div class="status-bar">
+        <span class="dot" id="statusDot"></span>
+        <span class="status-label" id="statusLabel">Idle</span>
+      </div>
+    </header>
+
+    <!-- Main layout -->
+    <main class="main">
+
+      <!-- Left panel: Quick Actions -->
+      <aside class="actions-panel">
+        <h2 class="panel-title">Quick Actions</h2>
+
+        <div class="action-group">
+          <p class="group-label">Open Sites</p>
+          <button class="action-btn" data-cmd="open youtube">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.6 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.3.6 9.3.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.75 15.5V8.5l6.25 3.5-6.25 3.5z"/></svg>
+            YouTube
+          </button>
+          <button class="action-btn" data-cmd="open google">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.8 10.2H12v3.9h5.6c-.5 2.5-2.7 4.4-5.6 4.4A6.1 6.1 0 0 1 6 12.5 6.1 6.1 0 0 1 12 6.4c1.5 0 2.8.5 3.8 1.4l2.9-2.9A10.4 10.4 0 0 0 12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c5.5 0 9.7-3.9 9.7-9.7 0-.7-.1-1.4-.3-2l.4.1v-.2z"/></svg>
+            Google
+          </button>
+          <button class="action-btn" data-cmd="open github">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.1-1.46-1.1-1.46-.9-.62.07-.6.07-.6 1 .07 1.52 1.02 1.52 1.02.89 1.52 2.33 1.08 2.9.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0 1 12 6.8c.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12c0-5.52-4.48-10-10-10z"/></svg>
+            GitHub
+          </button>
+          <button class="action-btn" data-cmd="open notepad">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM6 20V4h5v7h7v9H6z"/></svg>
+            Notepad
+          </button>
+        </div>
+
+        <div class="action-group">
+          <p class="group-label">Info</p>
+          <button class="action-btn" data-cmd="what is the time">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm.5 11H7v-2h4V7h1.5v6z"/></svg>
+            Time
+          </button>
+          <button class="action-btn" data-cmd="what is your name">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+            Name
+          </button>
+          <button class="action-btn" data-cmd="tell me a joke">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+            Joke
+          </button>
+        </div>
+
+        <div class="action-group">
+          <p class="group-label">Control</p>
+          <button class="action-btn danger" data-cmd="exit">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5a2 2 0 0 0-2 2v4h2V5h14v14H5v-4H3v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"/></svg>
+            Exit
+          </button>
+        </div>
+      </aside>
+
+      <!-- Center: Chat log -->
+      <section class="chat-section">
+        <div class="chat-log" id="chatLog">
+          <div class="msg nexa-msg">
+            <span class="msg-from">NEXA</span>
+            <p>Hello Abhiraj. I am Nexa, your AI assistant. How can I help you today?</p>
+          </div>
+        </div>
+
+        <!-- Waveform visualizer -->
+        <div class="waveform" id="waveform">
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+
+        <!-- Input bar -->
+        <div class="input-bar">
+          <input
+            type="text"
+            id="textInput"
+            class="text-input"
+            placeholder="Type a command to Nexa..."
+            autocomplete="off"
+          />
+          <button class="send-btn" id="sendBtn" title="Send">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg>
+          </button>
+          <button class="mic-btn" id="micBtn" title="Voice Input">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.49 6-3.31 6-6.72h-1.7z"/></svg>
+          </button>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    // ---------- State ----------
+    const statusDot = document.getElementById('statusDot');
+    const statusLabel = document.getElementById('statusLabel');
+    const chatLog = document.getElementById('chatLog');
+    const textInput = document.getElementById('textInput');
+    const sendBtn = document.getElementById('sendBtn');
+    const micBtn = document.getElementById('micBtn');
+    const waveform = document.getElementById('waveform');
+
+    // ---------- Helpers ----------
+    function setStatus(state) {
+      statusDot.className = 'dot ' + state;
+      const labels = { idle: 'Idle', listening: 'Listening…', thinking: 'Thinking…', speaking: 'Speaking…' };
+      statusLabel.textContent = labels[state] || 'Idle';
+    }
+
+    function addMessage(from, text) {
+      const div = document.createElement('div');
+      div.className = 'msg ' + (from === 'NEXA' ? 'nexa-msg' : 'user-msg');
+      div.innerHTML = `<span class="msg-from">${from}</span><p>${text}</p>`;
+      chatLog.appendChild(div);
+      chatLog.scrollTop = chatLog.scrollHeight;
+    }
+
+    function setWave(active) {
+      waveform.classList.toggle('active', active);
+    }
+
+    // ---------- Speech synthesis ----------
+    function speak(text) {
+      if (!window.speechSynthesis) return;
+      window.speechSynthesis.cancel();
+      const utt = new SpeechSynthesisUtterance(text);
+      utt.rate = 1.05;
+      utt.pitch = 1;
+      const voices = window.speechSynthesis.getVoices();
+      const female = voices.find(v => /female|zira|samantha|karen|victoria/i.test(v.name));
+      if (female) utt.voice = female;
+      utt.onstart = () => { setStatus('speaking'); setWave(true); };
+      utt.onend = () => { setStatus('idle'); setWave(false); };
+      speechSynthesis.speak(utt);
+    }
+
+    // ---------- Command handling ----------
+    function processCommand(cmd) {
+      const c = cmd.toLowerCase().trim();
+      if (!c) return;
+
+      addMessage('YOU', cmd);
+      setStatus('thinking');
+
+      let response = null;
+
+      if (c.includes('exit') || c.includes('stop')) {
+
+        const goodbye = "Goodbye Abhiraj";
+        addMessage("NEXA", goodbye);
+        speak(goodbye);
+
+        setTimeout(() => {
+        window.open('', '_self');
+        window.close();
+      }, 2000);
+
+        return;
+      } else if (c.includes('time')) {
+        const now = new Date();
+        response = `The time is ${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}`;
+      } else if (c.includes('open youtube')) {
+        window.open('https://youtube.com', '_blank');
+        response = 'Opening YouTube';
+      } else if (c.includes('open google')) {
+        window.open('https://google.com', '_blank');
+        response = 'Opening Google';
+      } else if (c.includes('open github')) {
+        window.open('https://github.com', '_blank');
+        response = 'Opening GitHub';
+      } else if (c.includes('joke')) {
+        response = 'Why do programmers prefer dark mode? Because light attracts bugs!';
+      } else if (c.includes('name')) {
+        response = 'My name is Nexa, your AI assistant.';
+      } else {
+
+  fetch("/ask", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ message: c })
+  })
+  .then(res => res.json())
+  .then(data => {
+      addMessage("NEXA", data.reply);
+      speak(data.reply);
+  })
+  .catch(() => {
+      addMessage("NEXA", "Error contacting AI server.");
+  });
+
+  return;
+}
+
+      setTimeout(() => {
+        addMessage('NEXA', response);
+        speak(response);
+      }, 400);
+    }
+
+    // ---------- Text send ----------
+    sendBtn.addEventListener('click', () => {
+      const val = textInput.value.trim();
+      if (val) { processCommand(val); textInput.value = ''; }
+    });
+    textInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') sendBtn.click();
+    });
+
+    // ---------- Quick action buttons ----------
+    document.querySelectorAll('.action-btn[data-cmd]').forEach(btn => {
+      btn.addEventListener('click', () => processCommand(btn.dataset.cmd));
+    });
+
+    // ---------- Mic / Speech recognition ----------
+    let recognizing = false;
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (SpeechRecognition) {
+      const recog = new SpeechRecognition();
+      recog.lang = 'en-IN';
+      recog.continuous = false;
+      recog.interimResults = false;
+
+      recog.onstart = () => { recognizing = true; setStatus('listening'); setWave(true); micBtn.classList.add('active'); };
+      recog.onend   = () => { recognizing = false; setStatus('idle'); setWave(false); micBtn.classList.remove('active'); };
+      recog.onerror = () => { recognizing = false; setStatus('idle'); setWave(false); micBtn.classList.remove('active'); };
+      recog.onresult = (e) => {
+        const transcript = e.results[0][0].transcript;
+        textInput.value = transcript;
+        processCommand(transcript);
+        textInput.value = '';
+      };
+
+      micBtn.addEventListener('click', () => {
+        if (recognizing) { recog.stop(); } else { recog.start(); }
+      });
+    } else {
+      micBtn.title = 'Speech recognition not supported in this browser';
+      micBtn.style.opacity = '0.4';
+    }
+
+    // Load voices async
+    if (window.speechSynthesis) {
+      speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
+    }
+  </script>
+</body>
+</html>
